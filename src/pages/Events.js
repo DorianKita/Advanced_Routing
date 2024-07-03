@@ -17,10 +17,13 @@ function EventsPage() {
 export default EventsPage;
 
 export async function loader() {
-  const response = await fetch("http://localhost:8080/events");
+  const response = await fetch("http://localhost:8080/eventsdasds");
   if (!response.ok) {
     // return { isError: true, message: "Failed to fetch events..." };
-    throw new Error();
+    throw new Response(
+      JSON.stringify({ message: "Could not fetch data from server" }),
+      { status: 500 }
+    );
   } else {
     return response;
   }
